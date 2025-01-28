@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #12ac8e;
+            --secondary-color: #0d846c;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f8f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px 30px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .terms-container {
+            padding: 30px;
+        }
+
+        .term-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .term-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .term-header i {
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .term-section.active .term-header i {
+            transform: rotate(90deg);
+        }
+
+        .term-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .term-section.active .term-content {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .accept-section {
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .custom-checkbox {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Terms & Conditions</h1>
+            <p>Please read our terms carefully</p>
+        </div>
+
+        <div class="terms-container">
+            <div class="term-section">
+                <div class="term-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <h2>1. Introduction</h2>
+                </div>
+                <div class="term-content">
+                    <p>Welcome to our Cardiovascular Health Service. These terms and conditions outline the rules and regulations for using our website.</p>
+                </div>
+            </div>
+
+            <div class="term-section">
+                <div class="term-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <h2>2. Privacy Policy</h2>
+                </div>
+                <div class="term-content">
+                    <p>We are committed to protecting your privacy. Any information provided will be handled with utmost confidentiality.</p>
+                </div>
+            </div>
+
+            <div class="term-section">
+                <div class="term-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <h2>3. User Responsibilities</h2>
+                </div>
+                <div class="term-content">
+                    <p>Users must provide accurate information and maintain the confidentiality of their account credentials.</p>
+                </div>
+            </div>
+
+            <div class="term-section">
+                <div class="term-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <h2>4. Medical Disclaimer</h2>
+                </div>
+                <div class="term-content">
+                    <p>Information provided is for general purposes only and should not substitute professional medical advice.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accept-section">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="acceptTerms">
+                <span>I have read and accept the terms and conditions</span>
+            </label>
+            <br>
+            <button class="back-button" onclick="goBack()">Back to Profile</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Authentication check
+            if (!localStorage.getItem('user')) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const sections = document.querySelectorAll('.term-section');
+            const progressBar = document.getElementById('progressBar');
+
+            // Section toggle handler
+            sections.forEach(section => {
+                section.querySelector('.term-header').addEventListener('click', () => {
+                    section.classList.toggle('active');
+                    updateProgress();
+                });
+            });
+
+            // Progress bar update
+            function updateProgress() {
+                const total = sections.length;
+                const read = document.querySelectorAll('.term-section.active').length;
+                const progress = (read / total) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+        });
+
+        function goBack() {
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

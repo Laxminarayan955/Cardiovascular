@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Cardiovascular Health</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #12ac8e;
+            --secondary-color: #0d846c;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f8f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px 30px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-box {
+            margin: 20px auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .faq-container {
+            padding: 30px;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .faq-item.active {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+            .search-input {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Frequently Asked Questions</h1>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search your question...">
+            </div>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    1. What is this website about?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    This website provides cardiovascular risk analysis based on your health data to help assess potential heart health risks.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    2. How does the risk analysis work?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    The analysis is based on medical research and considers factors such as age, blood pressure, cholesterol levels, lifestyle habits, and other health conditions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    3. Is the risk analysis accurate?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    The results are based on established medical guidelines and data-driven analysis, but they should not replace professional medical advice.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    4. What type of data do I need to provide?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You will need to enter information such as your age, weight, blood pressure, cholesterol levels, smoking habits, and medical history.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    5. Is my personal health data safe?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we prioritize user privacy and follow industry best practices to secure your data.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    6. Will my data be shared with anyone?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No, your personal health data is confidential and will not be shared without your consent.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    7. How can I check my cardiovascular risk?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Simply sign up, enter your health details, and receive a personalized risk analysis report.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    8. Can I book an appointment with a doctor through this site?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Currently, our site only provides cardiovascular risk analysis. However, we recommend consulting a healthcare professional for further evaluation.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    9. How often should I check my cardiovascular risk?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You can check periodically, especially if there are changes in your lifestyle or health conditions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    10. What should I do if my risk level is high?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    If your risk is high, we recommend consulting a doctor for further medical advice and lifestyle changes.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    11. Does this website provide medical treatment?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No, we only provide risk analysis based on your health data. Always seek professional medical guidance for treatment.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    12. Can I improve my cardiovascular health based on the results?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, the site may suggest general health tips, but for personalized medical advice, consult a doctor.
+                </div>
+            </div>
+        </div>
+
+        <button class="back-button" onclick="goBack()">Back to Profile</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Authentication check
+            if (!localStorage.getItem('user')) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const faqItems = document.querySelectorAll('.faq-item');
+            const searchInput = document.querySelector('.search-input');
+
+            // Toggle FAQ items
+            faqItems.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function goBack() {
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

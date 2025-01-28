@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #12ac8e;
+            --secondary-color: #0d846c;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f0f8f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .policy-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .policy-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-section h3 i {
+            font-size: 1.2em;
+        }
+
+        .policy-section p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .policy-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .email-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .email-link i {
+            font-size: 0.9em;
+        }
+
+        .button-container {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(18, 172, 142, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: January 2024</p>
+        </div>
+
+        <div class="content">
+            <div class="policy-section" style="animation-delay: 0.1s;">
+                <h3><i class="fas fa-info-circle"></i> Introduction</h3>
+                <p>Welcome to our Cardiovascular Risk Analysis website. We respect your privacy and are committed to protecting your personal data.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.2s;">
+                <h3><i class="fas fa-database"></i> Information We Collect</h3>
+                <p>We may collect personal information such as name, age, gender, contact details, health-related data, and technical information.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.3s;">
+                <h3><i class="fas fa-cogs"></i> How We Use Your Information</h3>
+                <p>Your data helps us provide cardiovascular risk analysis, improve website functionality, and ensure compliance with legal obligations.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.4s;">
+                <h3><i class="fas fa-shield-alt"></i> Data Protection and Security</h3>
+                <p>We implement security measures to protect your data from unauthorized access, but no online platform is completely secure.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.5s;">
+                <h3><i class="fas fa-share-alt"></i> Data Sharing and Third Parties</h3>
+                <p>We do not sell or trade your personal data. We only share it with trusted partners when necessary and with your consent.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.6s;">
+                <h3><i class="fas fa-cookie-bite"></i> Cookies and Tracking Technologies</h3>
+                <p>We use cookies to enhance user experience. You can manage cookie preferences through your browser settings.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.7s;">
+                <h3><i class="fas fa-user-shield"></i> User Rights</h3>
+                <p>You have the right to access, review, correct, or delete your data and withdraw consent at any time.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.8s;">
+                <h3><i class="fas fa-sync-alt"></i> Changes to This Privacy Policy</h3>
+                <p>We may update this policy periodically. Please review it regularly for any changes.</p>
+            </div>
+
+            <div class="policy-section" style="animation-delay: 0.9s;">
+                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                <p>If you have any questions, contact us at: 
+                    <a href="mailto:bucs@gmail.com" class="email-link">
+                        <i class="fas fa-envelope"></i>
+                        bucs@gmail.com
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                Back to Profile
+            </button>
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.style.opacity = '1';
+                } else {
+                    backToTop.style.opacity = '0';
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        function goBack() {
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

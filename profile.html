@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #12ac8e;
+            --secondary-color: #0d846c;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f8f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #12ac8e 0%, #0d846c 100%);
+            padding: 25px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            animation: headerGlow 3s infinite alternate;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shine 8s infinite linear;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .photo-upload-label {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(13, 132, 108, 0.9);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .photo-upload-label:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        #photoUpload {
+            display: none;
+        }
+
+        .profile-info {
+            padding: 30px;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .info-group:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .info-label {
+            color: var(--text-light);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .profile-section {
+            padding: 20px 30px;
+        }
+
+        .profile-box {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: block;
+            transition: 0.3s;
+        }
+
+        .profile-box:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .logout-button {
+            width: calc(100% - 60px);
+            margin: 20px 30px;
+            padding: 15px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-button:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .user-details-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 450px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .detail-item i {
+            margin-right: 15px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .detail-item span {
+            flex: 1;
+            text-align: left;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+
+        #userName {
+            font-size: 1.8em;
+            margin: 10px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @keyframes headerGlow {
+            from { background-position: 0% 50%; }
+            to { background-position: 100% 50%; }
+        }
+
+        @keyframes shine {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-section {
+            background: linear-gradient(135deg, #12ac8e 0%, #0d846c 100%);
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-photo-container {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        #userName {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .user-details {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .user-details {
+                text-align: left;
+            }
+        }
+
+        .profile-section {
+            background: linear-gradient(135deg, #12ac8e 0%, #0d846c 100%);
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-left {
+            text-align: center;
+        }
+
+        .profile-photo-container {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #userName {
+            font-size: 1.6em;
+            margin-top: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .user-details {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            max-width: 350px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .profile-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .user-details {
+                width: 100%;
+                max-width: none;
+                margin-top: 20px;
+            }
+        }
+
+        .menu-section {
+            padding: 20px;
+            display: grid;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .profile-box i {
+            font-size: 1.1em;
+            width: 24px;
+            margin-right: 12px;
+            text-align: center;
+        }
+
+        .profile-box:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(8px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logout-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 8px 20px;
+            margin: 20px auto;
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .logout-button i {
+            font-size: 1em;
+        }
+
+        .logout-button:hover {
+            background: #dc3545;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .logout-button {
+                padding: 6px 16px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-content">
+                <div class="profile-left">
+                    <div class="profile-photo-container">
+                        <img id="profilePhoto" src="assets/default-avatar.png" alt="Profile Photo" class="profile-photo">
+                        <label for="photoUpload" class="photo-upload-label">
+                            <i class="fas fa-camera" style="color: white;"></i>
+                        </label>
+                        <input type="file" id="photoUpload" accept="image/*">
+                    </div>
+                    <h1 id="userName">Loading...</h1>
+                </div>
+                <div class="user-details">
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="userEmail">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span id="userMobile">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-venus-mars"></i>
+                        <span id="userGender">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span id="userAge">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <div class="menu-section">
+                <a href="health-records.html" class="profile-box">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health Records</span>
+                </a>
+                <a href="notifications.html" class="profile-box">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="settings.html" class="profile-box">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="privacy-policy.html" class="profile-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy Policy</span>
+                </a>
+                <a href="faq.html" class="profile-box">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+                <a href="contact-us.html" class="profile-box">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+                <a href="term.html" class="profile-box">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Terms and Conditions</span>
+                </a>
+            </div>
+            <button class="logout-button" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Load user data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            if (!userData) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Update profile information
+            document.getElementById('userName').textContent = userData.fullName;
+            document.getElementById('userEmail').textContent = userData.email;
+            document.getElementById('userMobile').textContent = userData.mobileNumber;
+            document.getElementById('userGender').textContent = userData.gender;
+            document.getElementById('userAge').textContent = userData.age;
+
+            // Load profile picture if exists
+            const savedProfilePic = localStorage.getItem('profilePicture');
+            if (savedProfilePic) {
+                document.getElementById('profilePhoto').src = savedProfilePic;
+            }
+        });
+
+        // Handle profile picture upload
+        document.getElementById('photoUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profilePhoto = document.getElementById('profilePhoto');
+                    profilePhoto.src = e.target.result;
+                    // Save to localStorage
+                    localStorage.setItem('profilePicture', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('profilePicture');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
