@@ -404,3 +404,20 @@ function scrollToServices() {
         }, 1000);
     }
 }
+
+function showLoadingState(element) {
+  element.classList.add('skeleton-loading');
+}
+
+function hideLoadingState(element) {
+  element.classList.remove('skeleton-loading');
+}
+
+// Use in data loading functions
+document.addEventListener('DOMContentLoaded', () => {
+  const contentElements = document.querySelectorAll('.content-section');
+  contentElements.forEach(el => showLoadingState(el));
+  
+  // After data loads
+  contentElements.forEach(el => hideLoadingState(el));
+});
